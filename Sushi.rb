@@ -1,4 +1,4 @@
-require "./sushi_item.rb"
+require "./Item.rb"
 
 class Sushi
     @@sushi = []
