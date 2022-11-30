@@ -9,4 +9,19 @@ class Item
         @weight = weight
         @description = description
     end
+
+    def to_s()
+        "id=#@id, name=#@name, price=#@price, amount=#@amount,
+         weight=#@weight, description=#@description"
+    end
+
+    def to_h()
+        {'id' => @id, 'name'=> @name, 'price' => @price, 
+            'amount' => @amount, 'weight' => @weight, 'description' => @description}
+    end
+
+    def info()
+        yield
+    end
+
 end
