@@ -3,20 +3,19 @@ require 'byebug'
 require 'nokogiri'
 require 'csv'
 require 'json'
-require './Sushi.rb'
 require './Item.rb'
 
 class Cart
 
     def save_to_csv()
-        path_csv = './sushi_all.csv'
-        sushi = Sushi.get_All()
+        path_csv = './list_of_products.csv'
+        items = Item.get_All()
         begin  
             File.new(path_csv, "w")
             
             CSV.open(path_csv, "w", headers: ['Id', 'Name', 'Price', 'Amount', 'Weight', 'Description'], write_headers: true) do |csv|
-                sushi.each do |product|
-                    csv << [product.id, product.name, product.price, product.amount, product.weight, product.description]
+                items.each do |item|
+                    csv << item.to_s()
                 end
             end
 
@@ -27,28 +26,18 @@ class Cart
         end
 
     def save_to_json()
-        path_json = './sushi_all.json'
-        sushi = Sushi.get_All()
+        path_json = './list_of_products.json'
+        items = Item.get_All()
 
         begin 
             File.new(path_json, "w")
 
             File.open(path_json, "w") do |json|
-                sushi.each do |product|
-                    temp_hash = {
-                        "Id" => product.id,
-                        "Name" => product.name,
-                        "Price" => product.price,
-                        "Amount" => product.amount, 
-                        "Weight" => product.weight, 
-                        "Description" => product.description
-                    }
-
-                    json.write(JSON.pretty_generate(temp_hash))
+                items.each do |item|
+                    json.write(JSON.pretty_generate(item.to_h()))
                 end
             end
         end
-
 
             puts "Successfully writen in the json file"
         rescue StandardError => e
