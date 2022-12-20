@@ -3,9 +3,16 @@ require 'byebug'
 require 'nokogiri'
 require 'csv'
 require 'json'
+require 'yaml'
+require 'logger'
+
 require './Item.rb'
 
 class Cart
+
+    def initialize()
+        @logger = Logger.new(STDOUT)
+    end
 
     def save_to_csv()
         path_csv = './list_of_products.csv'
@@ -19,10 +26,10 @@ class Cart
                 end
             end
 
-            puts "Successfully writen in the csv file"
+            @logger.info('Successfully writen in the csv file')
         rescue StandardError => e
-            puts e.message
-            puts "Can not open the csv file for writing"
+            @logger.error(e.message)
+            @logger.error('Can not open the csv file for writing')
         end
 
     def save_to_json()
@@ -37,12 +44,33 @@ class Cart
                     json.write(JSON.pretty_generate(item.to_h()))
                 end
             end
-        end
 
-            puts "Successfully writen in the json file"
+            @logger.info('Successfully writen in the json file')
         rescue StandardError => e
-            puts e.message
-            puts "Can not open the json file for writing"
+            @logger.error(e.message)
+            @logger.error('Can not open the json file for writing')
         end
     end
+
+    def save_to_yml()
+        path_yml = './list_of_products.yaml'
+        items = Item.get_All()
+
+        begin
+            File.new(path_yml, "w")
+
+            File.open(path_yml, "w") do |yaml|
+                items.each do |item|
+                    yaml.write(item.to_yaml)
+                end
+            end
+        end
+
+        @logger.info('Successfully writen in the yaml file')
+        rescue StandardError => e
+            @logger.error(e.message)
+            @logger.error('Can not open the yaml file for writing')
+        end
+    end
+
 end
