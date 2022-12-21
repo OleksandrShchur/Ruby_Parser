@@ -1,12 +1,15 @@
 require 'open-uri'
 require 'byebug'
 require 'nokogiri'
+require 'logger'
+
 require './Item.rb'
 
 class Parser
 
     def initialize(url)
         @url = url
+        @logger = Logger.new(STDOUT)
     end
 
     def parse()
@@ -25,8 +28,11 @@ class Parser
                 i= i+1
                 Item.set_item(item)
             end
+
+            @logger.info('Successfully parsed the provided page - ' + @url)
         rescue OpenURI::HTTPError => e
-            puts e.message
+            @logger.error(e.message)
+            @logger.error('Error on parsing page - ' + @url)
         end
     end
 end

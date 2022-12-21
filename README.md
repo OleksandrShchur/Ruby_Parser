@@ -1,0 +1,8 @@
+**Local setup**
+for windows download from here version 3.1.2
+https://rubyinstaller.org/downloads/
+
+cd to directory with this project and run this commands
+bundle install = install DEPENDENCIES
+ruby name.rb = run script
+clear = clear console log
