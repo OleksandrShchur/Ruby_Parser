@@ -1,17 +1,27 @@
 require 'rubygems'
 require 'zip'
+require 'logger'
 
 class Zipper
     def initialize(input_dir, output_file)
         @input_dir = input_dir
         @output_file = output_file
+
+        @logger = Logger.new(STDOUT)
     end
 
     def write
         entries = Dir.entries(@input_dir) - %w[. ..]
     
-        ::Zip::File.open(@output_file, create: true) do |zipfile|
-          write_entries entries, '', zipfile
+        begin
+          ::Zip::File.open(@output_file, create: true) do |zipfile|
+            write_entries entries, '', zipfile
+          end
+
+          @logger.info('Zip file created without error.')
+        rescue StandardError => e
+          @logger.error(e.message)
+          @logger.error('Cannot write in zip file')
         end
     end
 

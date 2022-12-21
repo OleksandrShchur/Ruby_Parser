@@ -31,7 +31,7 @@ class Cart
             @logger.info('Successfully writen in the csv file')
         rescue StandardError => e
             @logger.error(e.message)
-            @logger.error('Can not open the csv file for writing')
+            @logger.error('Cannot open the csv file for writing')
         end
 
     def save_to_json()
@@ -50,7 +50,7 @@ class Cart
             @logger.info('Successfully writen in the json file')
         rescue StandardError => e
             @logger.error(e.message)
-            @logger.error('Can not open the json file for writing')
+            @logger.error('Cannot open the json file for writing')
         end
     end
 
@@ -71,7 +71,7 @@ class Cart
         @logger.info('Successfully writen in the yaml file')
         rescue StandardError => e
             @logger.error(e.message)
-            @logger.error('Can not open the yaml file for writing')
+            @logger.error('Cannot open the yaml file for writing')
         end
     end
 
