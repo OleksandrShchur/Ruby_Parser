@@ -10,13 +10,15 @@ require './Item.rb'
 
 class Cart
 
+    @@cart_list = []
+
     def initialize()
         @logger = Logger.new(STDOUT)
     end
 
     def save_to_csv()
         path_csv = './list_of_products.csv'
-        items = Item.get_All()
+        items = Cart.get_cart_list()
         begin  
             File.new(path_csv, "w")
             
@@ -34,7 +36,7 @@ class Cart
 
     def save_to_json()
         path_json = './list_of_products.json'
-        items = Item.get_All()
+        items = Cart.get_cart_list()
 
         begin 
             File.new(path_json, "w")
@@ -54,7 +56,7 @@ class Cart
 
     def save_to_yml()
         path_yml = './list_of_products.yaml'
-        items = Item.get_All()
+        items = Cart.get_cart_list()
 
         begin
             File.new(path_yml, "w")
@@ -71,6 +73,14 @@ class Cart
             @logger.error(e.message)
             @logger.error('Can not open the yaml file for writing')
         end
+    end
+
+    def self.add_to_cart(item)
+        @@cart_list.push(item)
+    end
+
+    def self.get_cart_list()
+        @@cart_list
     end
 
 end

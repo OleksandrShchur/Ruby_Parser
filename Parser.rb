@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'logger'
 
 require './Item.rb'
+require './Cart.rb'
 
 class Parser
 
@@ -26,7 +27,7 @@ class Parser
                 item.amount = element.css(".bottom-block").css(".under-title").text.split(" ")[0].to_i
                 item.id = i+1
                 i= i+1
-                Item.set_item(item)
+                Cart.add_to_cart(item)
             end
 
             @logger.info('Successfully parsed the provided page - ' + @url)

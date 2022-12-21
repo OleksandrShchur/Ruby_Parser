@@ -36,14 +36,6 @@ class Item
 
     def info()
         yield
-    end    
-
-    def self.set_item(item)
-        @@items.push(item)
-    end
-
-    def self.get_All()
-        @@items
     end
 
 end
