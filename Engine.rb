@@ -3,10 +3,12 @@ require 'logger'
 require './Parser.rb'
 require './Cart.rb'
 require './Zipper.rb'
+require './EmailSender.rb'
 
 class Engine
 
     def initialize()
+        @email_to_send = 'osur12709@gmail.com'
         @logger = Logger.new(STDOUT)
     end 
 
@@ -27,6 +29,15 @@ class Engine
         output_file = "./out.zip"
         zf = Zipper.new(directory_to_zip, output_file)
         zf.write()
+
+        begin
+            email_sender = Email::EmailSender.new
+            email_sender.send(@email_to_send, "501 - Ruby", "Subject", './out.zip') # throw an timeout error
+
+            @logger.info('Email with attachment is sent')
+        rescue StandardError => e
+            @logger.error(e)
+        end
     end
 
 end
