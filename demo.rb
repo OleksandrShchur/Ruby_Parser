@@ -3,8 +3,9 @@ require 'csv'
 require './Parser.rb'
 require './Cart.rb'
 require './Zipper.rb'
+require './MainApplication.rb'
 
-parser = Parser.new('https://chernivtsi.sushi-master.ua/ua/menu/aktsii')
+parser = Parser.new(MainApplication.singleton_class.class_variable_get(:@@web_address))
 
 cart = Cart.new()
 
