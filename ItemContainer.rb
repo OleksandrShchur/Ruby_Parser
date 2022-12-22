@@ -1,4 +1,7 @@
+require './MyApplicationTeam.rb'
+
 module ItemContainer
+    include MyApplicationTeam
     
     module ClassMethods
     end

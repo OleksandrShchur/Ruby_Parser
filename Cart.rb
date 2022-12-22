@@ -7,8 +7,10 @@ require 'yaml'
 require 'logger'
 
 require './Item.rb'
+require './MyApplicationTeam.rb'
 
 class Cart
+    include MyApplicationTeam
 
     @@cart_list = []
 

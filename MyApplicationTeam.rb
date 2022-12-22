@@ -5,7 +5,4 @@ module MyApplicationTeam
     
     module InstanceMethods
     end
-
-    self.included(class_instance)
-    
 end

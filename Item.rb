@@ -1,4 +1,8 @@
+require './MyApplicationTeam.rb'
+
 class Item
+    include MyApplicationTeam
+
     include Comparable
     include Enumerable
 
