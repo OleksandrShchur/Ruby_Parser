@@ -13,11 +13,11 @@ class MainApplication
         def run
             input_reader = InputReader.new
 
-            catalogue_link = MyApplicationTeam::AppSingleton.singleton_class.class_variable_get(:@@web_address)
+            catalogue_links = MyApplicationTeam::AppSingleton.singleton_class.class_variable_get(:@@web_addresses)
 
             engine = Engine.new
 
-            engine.perform_parsing(catalogue_link)
+            engine.perform_parsing(catalogue_links)
         end
     end
 end

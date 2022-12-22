@@ -2,7 +2,11 @@ module MyApplicationTeam
 
     class AppSingleton
         class << self
-            @@web_address = 'https://chernivtsi.sushi-master.ua/ua/menu/aktsii'
+            @@web_addresses = [
+                'https://chernivtsi.sushi-master.ua/ua/menu/aktsii',
+                'https://chernivtsi.sushi-master.ua/menu/rolls',
+                'https://chernivtsi.sushi-master.ua/menu/californii'
+            ]
 
             @@file_name = 'outputs/list_of_products'
     
