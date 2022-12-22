@@ -1,6 +1,6 @@
-require './MyApplicationTeam.rb'
-require './InputReader.rb'
-require './Engine.rb'
+require_relative 'MyApplicationTeam.rb'
+require_relative '../helpers/InputReader.rb'
+require_relative '../engine/Engine.rb'
 
 class MainApplication
     include MyApplicationTeam
@@ -13,7 +13,7 @@ class MainApplication
         def run
             input_reader = InputReader.new
 
-            catalogue_link = "https://chernivtsi.sushi-master.ua/ua/menu/aktsii"
+            catalogue_link = MyApplicationTeam::AppSingleton.singleton_class.class_variable_get(:@@web_address)
 
             engine = Engine.new
 

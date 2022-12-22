@@ -1,8 +1,8 @@
 require 'logger'
 
-require './Parser.rb'
-require './Cart.rb'
-require './Zipper.rb'
+require_relative '../helpers/Parser.rb'
+require_relative '../biz/Cart.rb'
+require_relative '../helpers/Zipper.rb'
 
 class Engine
 
@@ -24,7 +24,7 @@ class Engine
         cart.save_to_yml()
 
         directory_to_zip = "./"
-        output_file = "./out.zip"
+        output_file = "./outputs/archive.zip"
         zf = Zipper.new(directory_to_zip, output_file)
         zf.write()
     end

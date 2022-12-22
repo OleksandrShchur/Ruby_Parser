@@ -1,4 +1,4 @@
-require './MyApplicationTeam.rb'
+require_relative 'MyApplicationTeam.rb'
 
 module ItemContainer
     include MyApplicationTeam
