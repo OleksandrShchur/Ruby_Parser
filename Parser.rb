@@ -5,8 +5,10 @@ require 'logger'
 
 require './Item.rb'
 require './Cart.rb'
+require './MyApplicationTeam.rb'
 
 class Parser
+    include MyApplicationTeam
 
     def initialize(url)
         @url = url
