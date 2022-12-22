@@ -2,6 +2,7 @@ require 'rubygems'
 require 'zip'
 require 'logger'
 
+
 class Zipper
     def initialize(input_dir, output_file)
         @input_dir = input_dir

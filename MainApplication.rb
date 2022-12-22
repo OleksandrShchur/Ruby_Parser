@@ -1,6 +1,7 @@
-require './MyApplicationTeam.rb'
-require './InputReader.rb'
-require './Engine.rb'
+require_relative 'MyApplicationTeam.rb'
+require_relative 'InputReader.rb'
+require_relative 'Engine.rb'
+
 
 class MainApplication
     include MyApplicationTeam

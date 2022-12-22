@@ -1,5 +1,5 @@
+require_relative 'MainApplication.rb'
 
-require './MainApplication.rb'
 
 app = MainApplication::Application.new
 app.run

@@ -5,9 +5,9 @@ require 'csv'
 require 'json'
 require 'yaml'
 require 'logger'
+require_relative 'Item.rb'
+require_relative 'MyApplicationTeam.rb'
 
-require './Item.rb'
-require './MyApplicationTeam.rb'
 
 class Cart
     include MyApplicationTeam

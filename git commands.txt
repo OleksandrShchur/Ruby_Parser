@@ -1,2 +1,6 @@
 git clone https://github.com/OleksandrShchur/Ruby_Parser.git
 git checkout -b add-logger-app_file-readme-modify-logic
+git status
+git add .
+git commit -m "init"
+git push -u origin add-logger-app_file-readme-modify-logic
