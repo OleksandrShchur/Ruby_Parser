@@ -10,13 +10,15 @@ require './Item.rb'
 
 class Cart
 
+    @@cart_list = []
+
     def initialize()
         @logger = Logger.new(STDOUT)
     end
 
     def save_to_csv()
         path_csv = './list_of_products.csv'
-        items = Item.get_All()
+        items = Cart.get_cart_list()
         begin  
             File.new(path_csv, "w")
             
@@ -29,12 +31,12 @@ class Cart
             @logger.info('Successfully writen in the csv file')
         rescue StandardError => e
             @logger.error(e.message)
-            @logger.error('Can not open the csv file for writing')
+            @logger.error('Cannot open the csv file for writing')
         end
 
     def save_to_json()
         path_json = './list_of_products.json'
-        items = Item.get_All()
+        items = Cart.get_cart_list()
 
         begin 
             File.new(path_json, "w")
@@ -48,13 +50,13 @@ class Cart
             @logger.info('Successfully writen in the json file')
         rescue StandardError => e
             @logger.error(e.message)
-            @logger.error('Can not open the json file for writing')
+            @logger.error('Cannot open the json file for writing')
         end
     end
 
     def save_to_yml()
         path_yml = './list_of_products.yaml'
-        items = Item.get_All()
+        items = Cart.get_cart_list()
 
         begin
             File.new(path_yml, "w")
@@ -69,8 +71,16 @@ class Cart
         @logger.info('Successfully writen in the yaml file')
         rescue StandardError => e
             @logger.error(e.message)
-            @logger.error('Can not open the yaml file for writing')
+            @logger.error('Cannot open the yaml file for writing')
         end
+    end
+
+    def self.add_to_cart(item)
+        @@cart_list.push(item)
+    end
+
+    def self.get_cart_list()
+        @@cart_list
     end
 
 end

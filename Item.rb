@@ -1,4 +1,7 @@
 class Item
+    include Comparable
+    include Enumerable
+
     @@items = []
 
     attr_accessor :id, :name, :price, :amount, :weight, :description
@@ -10,6 +13,17 @@ class Item
         @amount = amount
         @weight = weight
         @description = description
+    end
+
+    def each(&block)
+        @items.each do |element|
+          block.call(element)
+        end
+    end
+
+    def <=>(other)
+        price <=> other.price and
+        weight <=> other.weight
     end
 
     def to_s()
@@ -36,14 +50,6 @@ class Item
 
     def info()
         yield
-    end    
-
-    def self.set_item(item)
-        @@items.push(item)
-    end
-
-    def self.get_All()
-        @@items
     end
 
 end
