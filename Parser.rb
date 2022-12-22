@@ -3,9 +3,10 @@ require 'byebug'
 require 'nokogiri'
 require 'logger'
 
-require './Item.rb'
-require './Cart.rb'
-require './MyApplicationTeam.rb'
+require_relative 'Item.rb'
+require_relative 'Cart.rb'
+require_relative 'MyApplicationTeam.rb'
+
 
 class Parser
     include MyApplicationTeam

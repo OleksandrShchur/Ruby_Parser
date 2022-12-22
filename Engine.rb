@@ -1,8 +1,8 @@
 require 'logger'
+require_relative 'Parser.rb'
+require_relative 'Cart.rb'
+require_relative 'Zipper.rb'
 
-require './Parser.rb'
-require './Cart.rb'
-require './Zipper.rb'
 
 class Engine
 

@@ -1,4 +1,5 @@
-require './MyApplicationTeam.rb'
+require_relative 'MyApplicationTeam.rb'
+
 
 class Item
     include MyApplicationTeam

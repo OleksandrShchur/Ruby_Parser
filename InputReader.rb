@@ -1,5 +1,6 @@
 require 'logger'
 
+
 class InputReader
 
     def initialize()
