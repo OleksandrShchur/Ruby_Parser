@@ -1,4 +1,4 @@
-require './MyApplicationTeam.rb'
+require_relative 'MyApplicationTeam.rb'
 
 class Item
     include MyApplicationTeam
@@ -17,6 +17,12 @@ class Item
         @amount = amount
         @weight = weight
         @description = description
+
+        # Dynamic Attributes
+        # Setter
+        define_singleton_method(description) { |value| @description = value }
+        # Getter
+        define_singleton_method(description) { @description }
     end
 
     def each(&block)

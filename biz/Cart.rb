@@ -6,8 +6,8 @@ require 'json'
 require 'yaml'
 require 'logger'
 
-require './Item.rb'
-require './MyApplicationTeam.rb'
+require_relative 'Item.rb'
+require_relative 'MyApplicationTeam.rb'
 
 class Cart
     include MyApplicationTeam
@@ -19,7 +19,8 @@ class Cart
     end
 
     def save_to_csv()
-        path_csv = './list_of_products.csv'
+        path_csv = MyApplicationTeam::AppSingleton.singleton_class.class_variable_get(:@@file_name) + '.csv'
+
         items = Cart.get_cart_list()
         begin  
             File.new(path_csv, "w")
@@ -37,7 +38,7 @@ class Cart
         end
 
     def save_to_json()
-        path_json = './list_of_products.json'
+        path_json = MyApplicationTeam::AppSingleton.singleton_class.class_variable_get(:@@file_name) + '.json'
         items = Cart.get_cart_list()
 
         begin 
@@ -57,7 +58,7 @@ class Cart
     end
 
     def save_to_yml()
-        path_yml = './list_of_products.yaml'
+        path_yml = MyApplicationTeam::AppSingleton.singleton_class.class_variable_get(:@@file_name) + '.yaml'
         items = Cart.get_cart_list()
 
         begin
