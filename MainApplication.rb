@@ -1,11 +1,23 @@
 require './MyApplicationTeam.rb'
+require './InputReader.rb'
+require './Engine.rb'
 
 class MainApplication
     include MyApplicationTeam
 
-    attr_accessor :path_to_saving_files
-    
-    def initialize(path_to_saving_files)
-        @path_to_saving_files = path_to_saving_files
+    class Application
+        def initialize
+            @reporting_email = "osur12709@gmail.com"
+        end
+
+        def run
+            input_reader = InputReader.new
+
+            catalogue_link = "https://chernivtsi.sushi-master.ua/ua/menu/aktsii"
+
+            engine = Engine.new
+
+            engine.perform_parsing(catalogue_link)
+        end
     end
 end
