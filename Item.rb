@@ -12,7 +12,12 @@ class Item
         @price = price
         @amount = amount
         @weight = weight
-        @description = description
+
+        # Dynamic Attributes
+        # Setter
+        define_singleton_method(description) { |value| @description = value }
+        # Getter
+        define_singleton_method(description) { @description }
     end
 
     def each(&block)
@@ -28,22 +33,22 @@ class Item
 
     def to_s()
         [
-            @id, 
+            @id,
             @name,
-            @price, 
-            @amount, 
-            @weight, 
+            @price,
+            @amount,
+            @weight,
             @description
         ]
     end
 
     def to_h()
         {
-            'id' => @id, 
-            'name'=> @name, 
-            'price' => @price, 
-            'amount' => @amount, 
-            'weight' => @weight, 
+            'id' => @id,
+            'name'=> @name,
+            'price' => @price,
+            'amount' => @amount,
+            'weight' => @weight,
             'description' => @description
         }
     end
